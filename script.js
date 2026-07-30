@@ -104,6 +104,7 @@ computer choice: ${computerChoice} =>
     if (humanScore===5){
         myDiv.append("Game Over! You reached 5 points, you win the match!");
         disableButtons();
+        resetBtn.style.display="inline-block";
     }
     else if(computerScore===5){
         myDiv.append("Game Over! The computer reached 5 points, you lose.");
@@ -114,9 +115,26 @@ computer choice: ${computerChoice} =>
 
 //function to disable buttons
 function disableButtons(){
-    document.querySelectorAll("button").forEach(button=>button.disabled=true);
+    document.querySelectorAll(".choice-btn").forEach(button=>button.disabled=true);
 
 }
+
+// to reset buttons 
+const resetBtn= document.getElementById("reset-btn");
+
+resetBtn.addEventListener("click", ()=>{
+    humanScore=0;
+    computerScore=0;
+    document.getElementById("human-score").textContent=humanScore;
+    document.getElementById("computer-score").textContent=computerScore;
+    document.getElementById("results-div").textContent="";
+    myDiv.textContent="";
+    document.querySelectorAll(".choice-btn").forEach(button=>{
+        button.disabled=false;
+
+    });
+    resetBtn.style.display="none";
+})
 
 
 // a function that tracks scores and decide the winner
