@@ -103,14 +103,20 @@ computer choice: ${computerChoice} =>
     
     if (humanScore===5){
         myDiv.append("Game Over! You reached 5 points, you win the match!");
+        disableButtons();
     }
     else if(computerScore===5){
         myDiv.append("Game Over! The computer reached 5 points, you lose.");
+        disableButtons();
 
     }
 }
 
+//function to disable buttons
+function disableButtons(){
+    document.querySelectorAll("button").forEach(button=>button.disabled=true);
 
+}
 
 
 // a function that tracks scores and decide the winner
